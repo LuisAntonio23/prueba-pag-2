@@ -16,10 +16,9 @@ var sendMessage = function (msg) {
 	window.parent.postMessage(msg, '*');
 };
 
-var messageButton = document.getElementById('send');
-
-
-bindEvent(messageButton, 'click', function (e) {
-	sendMessage('' + document.location);
+bindEvent(window, 'message', function (e) {
+	if(e.data == 'getUrlLocation'){
+		sendMessage('' + document.location);
+	}
 });
 </script>
