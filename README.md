@@ -4,21 +4,15 @@
 <button id="send">Enviar MSG a Principal</button>
 
 <script type="text/javascript">
-function bindEvent(element, eventName, eventHandler) {
-       	if (element.addEventListener) {
-               	element.addEventListener(eventName, eventHandler, false);
-      	} else if (element.attachEvent) {
-               	element.attachEvent('on' + eventName, eventHandler);
-       	}
+function reciveMessage(e){
+	if(e.data == 'getUrlLocation'){
+		sendMessage('' + document.location);
+	}
 }
-	
+
 var sendMessage = function (msg) {
 	window.parent.postMessage(msg, '*');
 };
 
-bindEvent(window, 'message', function (e) {
-	if(e.data == 'getUrlLocation'){
-		sendMessage('' + document.location);
-	}
-});
+window.addEventListener('message',reciveMessage);
 </script>
