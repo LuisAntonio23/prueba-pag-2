@@ -4,7 +4,7 @@
 <button id="send">Enviar MSG a Principal</button>
 
 <script type="text/javascript">
-
+window.onload = function() {
 	function receiveMessage(e) {
 		
 		var styleSheet = document.createElement('style')
@@ -21,5 +21,5 @@
 	};
 	
 	window.addEventListener('message', receiveMessage);
-
+}
 </script>
